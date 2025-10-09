@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn> <!-- allow missing XML doc summaries -->
+    <AnalysisLevel>latest</AnalysisLevel>
+    <LangVersion>preview</LangVersion> <!-- or latestMajor; preview is fine -->
+  </PropertyGroup>
+</Project>
