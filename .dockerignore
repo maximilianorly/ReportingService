@@ -1,0 +1,9 @@
+# Keep launchSettings out of container builds/runs
+Api/Properties/launchSettings.json
+
+# Usual noise
+**/bin/
+**/obj/
+web/node_modules/
+web/dist/
+.DS_Store

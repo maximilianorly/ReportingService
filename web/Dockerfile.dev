@@ -1,0 +1,10 @@
+FROM node:20-bookworm
+WORKDIR /app
+
+COPY package*.json ./
+
+ENV HOST=0.0.0.0 PORT=5173
+EXPOSE 5173
+
+# Ensure deps are installed after bind mount; keep node_modules on a volume
+CMD ["sh","-lc","npm ci && npm run dev -- --host 0.0.0.0 --port 5173"]

@@ -1,0 +1,13 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Api/Dockerfile
+    image: reportingservice-api:latest
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      ASPNETCORE_ENVIRONMENT: Production
+      # ConnectionStrings__ReportingDb: "Server=tcp:<aws-sql-endpoint>,1433;Database=ReportingProd;User ID=...;Password=...;Encrypt=True;TrustServerCertificate=False"
+    ports:
+      - "8080:8080"
+    restart: unless-stopped

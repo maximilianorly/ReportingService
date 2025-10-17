@@ -51,7 +51,7 @@ dotnet watch
 - Swagger → `https://localhost:7139/swagger`
 - Health → `https://localhost:7139/health`
 
-During development, the frontend runs on **Vite (`http://localhost:5173`)** and proxies API requests to `http://localhost:5010`.
+During development, the frontend runs on **Vite (`http://localhost:5173`)** and proxies API requests to `http://localhost:8080`.
 
 ---
 

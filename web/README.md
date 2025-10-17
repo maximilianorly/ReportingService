@@ -17,7 +17,7 @@ It provides the UI for interacting with the .NET API and will eventually host th
 
 ### Prerequisites
 - Node 18+ and npm
-- Backend API running at `http://localhost:5010` or `https://localhost:7139`
+- Backend API running at `http://localhost:8080` or `https://localhost:7139`
 
 ### Start the SPA (dev)
 ```bash
@@ -36,9 +36,9 @@ npm run dev
 // vite.config.ts (excerpt)
 server: {
   proxy: {
-    '/api': 'http://localhost:5010',
-    '/swagger': 'http://localhost:5010',
-    '/health': 'http://localhost:5010'
+    '/api': 'http://localhost:8080',
+    '/swagger': 'http://localhost:8080',
+    '/health': 'http://localhost:8080'
   }
 }
 ```
@@ -119,7 +119,7 @@ Served statically by Kestrel.
 
 | Environment | SPA URL | API URL | HMR | Notes |
 |-------------|---------|---------|-----|-------|
-| **Dev**     | http://localhost:5173 | proxied to http://localhost:5010 | ✅ | Vite proxy handles API |
+| **Dev**     | http://localhost:5173 | proxied to http://localhost:8080 | ✅ | Vite proxy handles API |
 | **Prod**    | https://localhost:7139 | same origin | ❌ | Built assets served by Kestrel |
 
 ---

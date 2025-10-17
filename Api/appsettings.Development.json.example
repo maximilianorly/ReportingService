@@ -1,0 +1,11 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "ConnectionStrings": {
+    "ReportingDb": "Server=localhost,1433;Database=ReportingDemo;User ID=sa;Password=YOUR_PASSWORD_HERE;Encrypt=True;TrustServerCertificate=True"
+  }
+}

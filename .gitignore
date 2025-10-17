@@ -1,0 +1,38 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+.vs/
+
+# User secrets (local machine only)
+**/appsettings.*.local.json
+
+# Environment variables (secrets)
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+dist/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build outputs
+wwwroot/assets/
+wwwroot/index.html
+
+# Development settings with secrets
+**/appsettings.Development.json

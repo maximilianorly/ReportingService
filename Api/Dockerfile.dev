@@ -1,0 +1,21 @@
+FROM mcr.microsoft.com/dotnet/sdk:9.0
+WORKDIR /src
+
+# NuGet sources
+COPY NuGet.Config ./
+
+# Pre-restore for faster iteration
+COPY Api/Api.csproj Api/
+COPY Reporting/Reporting.csproj Reporting/
+RUN dotnet restore Api/Api.csproj
+
+# Full source
+COPY . .
+
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080 \
+    ASPNETCORE_ENVIRONMENT=Development \
+    DOTNET_USE_POLLING_FILE_WATCHER=true \
+    DOTNET_RUNNING_IN_CONTAINER=true
+
+EXPOSE 8080
+ENTRYPOINT ["dotnet","watch","--project","Api/Api.csproj","--no-launch-profile"]

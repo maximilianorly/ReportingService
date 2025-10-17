@@ -19,28 +19,73 @@ ReportingService/
 
 ## 🚀 Quick Start
 
-### Development
+### Option 1: Local Development (without Docker)
 ```bash
-# Backend API (https://localhost:7139)
+# Backend API (http://localhost:8080)
 cd Api
-dotnet watch
-```
+dotnet watch --launch-profile http
 
-```bash
-# Frontend SPA (http://localhost:5173)
+# Frontend SPA (http://localhost:5173) - in separate terminal
 cd web
 npm ci
 npm run dev
 ```
 Vite automatically proxies `/api`, `/swagger`, and `/health` to the API.
 
-### Production
+### Option 2: Docker Development (Recommended)
+**Matches production Ubuntu environment** for platform-specific dependencies (e.g., DevExpress reporting).
+
+**First time setup:**
 ```bash
-cd web && npm run build     # build SPA → ../Api/wwwroot
-cd ../Api && dotnet run     # serve API + SPA via Kestrel
+# Create .env file from example
+cp .env.example .env
+# Edit .env and set MSSQL_SA_PASSWORD to a secure password
 ```
 
-Visit → `https://localhost:7139/`
+**Start services:**
+```bash
+# Build and start all containers (API, Web, MSSQL)
+docker compose -f docker-compose.dev.yml up --build -d
+
+# View logs
+docker compose -f docker-compose.dev.yml logs -f
+
+# View specific service logs
+docker compose -f docker-compose.dev.yml logs -f api
+```
+
+**Access the app:**
+- Frontend: http://localhost:5173
+- API: http://localhost:8080/health
+- Swagger: http://localhost:8080/swagger
+- Database: localhost:1433
+
+**Managing containers:**
+```bash
+# Stop (keeps containers & data)
+docker compose -f docker-compose.dev.yml stop
+
+# Start stopped containers
+docker compose -f docker-compose.dev.yml start
+
+# Rebuild after code changes
+docker compose -f docker-compose.dev.yml up --build -d
+
+# View container health
+docker compose -f docker-compose.dev.yml ps
+
+# Completely remove containers & volumes (⚠️ deletes DB data)
+docker compose -f docker-compose.dev.yml down -v
+```
+
+### Production Deployment
+```bash
+# Build production image
+docker build -t reportingservice-api:latest -f Api/Dockerfile .
+
+# Run in production (use docker-compose.prod.yml or direct docker run)
+docker compose -f docker-compose.prod.yml up -d
+```
 
 ---
 
